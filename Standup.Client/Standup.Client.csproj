@@ -5,7 +5,9 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RestoreSources>
       $(RestoreSources);
-      https://dotnetfeed.blob.core.windows.net/aspnet-extensions/index.json
+      https://dotnetfeed.blob.core.windows.net/aspnet-extensions/index.json;
+      https://grpc.jfrog.io/grpc/api/nuget/v3/grpc-nuget-dev;
+      https://api.nuget.org/v3/index.json
     </RestoreSources>
   </PropertyGroup>
 

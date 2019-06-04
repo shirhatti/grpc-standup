@@ -1,5 +1,7 @@
 ﻿using Grpc.Core;
+using Grpc.Net.Client;
 using System;
+using System.Net.Http;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 
@@ -13,6 +15,10 @@ namespace Standup.Client
             var client = new Adder.AdderClient(channel);
             await StreamingAddAsync(client);
             await channel.ShutdownAsync();
+
+            //using var httpClient = new HttpClient() { BaseAddress = new Uri("https://localhost:5001") };
+            //var client = GrpcClient.Create<Adder.AdderClient>(httpClient);
+            //await StreamingAddAsync(client);
         }
 
         private static async Task StreamingAddAsync(Adder.AdderClient client)
