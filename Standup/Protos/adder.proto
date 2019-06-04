@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Standup";
+
+package Add;
+
+service Adder {
+  rpc Add (stream AddRequest) returns (AddReply) {}
+}
+
+message AddRequest {
+  int32 value = 1;
+}
+
+message AddReply {
+  int32 sum = 1;
+}

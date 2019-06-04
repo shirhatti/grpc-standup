@@ -1,8 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RestoreSources>
+      $(RestoreSources);
+      https://dotnetfeed.blob.core.windows.net/aspnet-extensions/index.json
+    </RestoreSources>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.8.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="0.1.21-pre1" />
+    <PackageReference Include="Grpc.Tools" Version="1.21.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="..\Standup\Protos\greet.proto" GrpcServices="Client">
+      <Link>Protos\greet.proto</Link>
+    </Protobuf>
+    <Protobuf Include="..\Standup\Protos\adder.proto" GrpcServices="Client">
+      <Link>Protos\adder.proto</Link>
+    </Protobuf>
+  </ItemGroup>
 
 </Project>

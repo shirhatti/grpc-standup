@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Greet;
 using Grpc.Core;
+using System.Threading.Tasks;
 
 namespace Standup
 {
