@@ -11,14 +11,14 @@ namespace Standup.Client
     {
         public static async Task Main(string[] args)
         {
-            var channel = new Channel("localhost:50051", ChannelCredentials.Insecure);
-            var client = new Adder.AdderClient(channel);
-            await StreamingAddAsync(client);
-            await channel.ShutdownAsync();
-
-            //using var httpClient = new HttpClient() { BaseAddress = new Uri("https://localhost:5001") };
-            //var client = GrpcClient.Create<Adder.AdderClient>(httpClient);
+            //var channel = new Channel("localhost:50051", ChannelCredentials.Insecure);
+            //var client = new Adder.AdderClient(channel);
             //await StreamingAddAsync(client);
+            //await channel.ShutdownAsync();
+
+            using var httpClient = new HttpClient() { BaseAddress = new Uri("https://localhost:5001") };
+            var client = GrpcClient.Create<Adder.AdderClient>(httpClient);
+            await StreamingAddAsync(client);
         }
 
         private static async Task StreamingAddAsync(Adder.AdderClient client)
