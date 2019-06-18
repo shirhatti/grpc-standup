@@ -12,3 +12,15 @@ A sample gRPC project for the ASP.NET Community Standup
 
 # Launch VS
 .\startvs.cmd
+```
+
+## Enable Server interceptor
+
+Modify `ConfigureServices()` in `/Standup/Startup.cs`
+
+```csharp
+services.AddGrpc(options =>
+{
+    options.Interceptors.Add<MaxStreamingRequestTimeoutInterceptor>(TimeSpan.FromSeconds(10));
+});
+```
